@@ -1,0 +1,136 @@
+To create an HTML calculator with a cool color scheme, we will need to use HTML, CSS, and JavaScript. 
+
+HTML will be used to create the structure of the calculator, CSS will be used to style the calculator and give it a cool color scheme, and JavaScript will be used to make the calculator functional.
+
+Here are the core files and their purposes:
+
+1. `index.html`: This is the main HTML file that will contain the structure of the calculator.
+2. `styles.css`: This is the CSS file that will contain the styles for the calculator.
+3. `script.js`: This is the JavaScript file that will contain the logic for the calculator.
+
+Let's start with the `index.html` file:
+
+index.html
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="display" disabled>
+        <div class="buttons">
+            <button class="btn operator" value="+">+</button>
+            <button class="btn operator" value="-">-</button>
+            <button class="btn operator" value="*">*</button>
+            <button class="btn operator" value="/">/</button>
+            <button class="btn number" value="7">7</button>
+            <button class="btn number" value="8">8</button>
+            <button class="btn number" value="9">9</button>
+            <button class="btn number" value="4">4</button>
+            <button class="btn number" value="5">5</button>
+            <button class="btn number" value="6">6</button>
+            <button class="btn number" value="1">1</button>
+            <button class="btn number" value="2">2</button>
+            <button class="btn number" value="3">3</button>
+            <button class="btn number" value="0">0</button>
+            <button class="btn equal" value="=">=</button>
+            <button class="btn clear" value="C">C</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+Next, let's move on to the `styles.css` file:
+
+styles.css
+```css
+body {
+    background-color: #282a36;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.calculator {
+    border: 1px solid #44475a;
+    border-radius: 5px;
+    padding: 20px;
+    width: 200px;
+}
+
+.display {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #44475a;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn {
+    width: 45px;
+    height: 45px;
+    margin: 2px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.number {
+    background-color: #50fa7b;
+}
+
+.operator {
+    background-color: #ff79c6;
+}
+
+.equal {
+    background-color: #8be9fd;
+}
+
+.clear {
+    background-color: #ff5555;
+}
+```
+
+Finally, let's move on to the `script.js` file:
+
+script.js
+```javascript
+let display = document.querySelector('.display');
+let buttons = Array.from(document.querySelectorAll('.btn'));
+let operators = Array.from(document.querySelectorAll('.operator'));
+let equal = document.querySelector('.equal');
+let clear = document.querySelector('.clear');
+
+buttons.map( button => {
+    button.addEventListener('click', (e) => {
+        display.value += e.target.value;
+    })
+});
+
+equal.addEventListener('click', () => {
+    try {
+        display.value = eval(display.value);
+    } catch {
+        display.value = "Error";
+    }
+});
+
+clear.addEventListener('click', () => {
+    display.value = '';
+});
+```
+
+This code will create a simple calculator with a cool color scheme. The calculator will be able to perform basic arithmetic operations like addition, subtraction, multiplication, and division.
